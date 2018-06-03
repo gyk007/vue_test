@@ -36,10 +36,10 @@ export default {
 	},
 	methods: {
 		logIn() {       
-			if (!/\S+@\S+\.\S+/.test(this.user.login )) {    
-				this.$data.loginError = true;   
-				return;
-			}
+			// if (!/\S+@\S+\.\S+/.test(this.user.login )) {    
+			// 	this.$data.loginError = true;   
+			// 	return;
+			// }
 			this.$data.loginError = false;
 			this.$store.dispatch('auth');
 		}		 

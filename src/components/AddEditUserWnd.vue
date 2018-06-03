@@ -22,24 +22,25 @@ export default {
 		selectedUser(){      
 			return this.$store.getters.selectedUser
 		},
+		title () {
+			if (this.$store.getters.selectedUser.id) {
+				return 'Edit User'
+			} else {
+				return 'Add User'
+			}
+		},
 		userList() {
       		return this.$store.getters.userList 
     	},
 		openAddEditWnd : {
 			get()  {
-				 return this.$store.getters.openAddEditWnd  
+				return this.$store.getters.openAddEditWnd  
 			},
 			set (newValue) {				 
 				this.$store.commit('set', {type: 'openAddEditWnd',  items: newValue});
-			}        
-			 
+			} 		 
 		} 
-	}, 
-	data () {
-		return {
-			title: this.selectedUser &&  this.selectedUser.id ? 'Edit' : 'Add',			 		  
-		}
-	},
+	}, 	 
 	methods: {
 		Save() { 
 			if (this.selectedUser.id) {
