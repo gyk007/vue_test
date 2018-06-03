@@ -1,7 +1,8 @@
 <template>
 	<div>	 
 		<b-modal v-model="openAuthWnd"  title="Log In" size="sm"  no-close-on-backdrop hide-header-close centered>
-			<b-alert :show='loginError' variant="danger">You entered an incorrect Email.</b-alert>        
+			<b-alert :show='loginError'    variant="danger">You entered an incorrect Email.</b-alert> 
+			<b-alert :show='passwordError' variant="danger">You entered an incorrect Password.</b-alert>        
 			<b-form-input v-model="user.login" type="email" placeholder="Enter your login" style='margin-bottom: 10px;'></b-form-input>
 			<b-form-input v-model="user.password" type="password" placeholder="Enter your password" style='margin-bottom: 10px;'></b-form-input> 
 			<div slot="modal-footer" class="w-100"> 
@@ -31,16 +32,24 @@ export default {
 	}, 
 	data () {
 		return { 
-			loginError: false,			 
+			loginError   : false,
+			passwordError: false,			 
 		}
 	},
 	methods: {
 		logIn() {       
-			// if (!/\S+@\S+\.\S+/.test(this.user.login )) {    
-			// 	this.$data.loginError = true;   
-			// 	return;
-			// }
-			this.$data.loginError = false;
+			if (!/\S+@\S+\.\S+/.test(this.user.login )) {    
+				this.$data.loginError = true;   
+				return;
+			}
+			this.$data.loginError    = false;
+
+			if (!this.user.password) {
+				this.$data.passwordError = true;   
+				return;
+			}			 
+			this.$data.passwordError = false;
+
 			this.$store.dispatch('auth');
 		}		 
 	}

@@ -67,7 +67,7 @@ const store = new Vuex.Store({
 				axios.post(Conf.url.auth, state.user).then(onFulfilled);				 	 
 			
 				moxios.wait(function () {
-					let request = moxios.requests.mostRecent()						 
+					let request = moxios.requests.mostRecent()											 
 					request.respondWith({
 						status: 200,
 						response: {
@@ -110,10 +110,6 @@ const store = new Vuex.Store({
 					})
 				})
 			})			 
-
-
-			 
-			 
 		}
 	}
 })

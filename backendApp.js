@@ -4,7 +4,7 @@ var app = express();
  
 
 app.get('/auth', function(req, res) {
-  	res.render('index');
+  	 
 });
 
 app.get('/about', function(req, res) {
